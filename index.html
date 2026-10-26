@@ -3,168 +3,523 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ozone Lounge Kilimani</title>
+    <title>Ozone Lounge - Food Menu</title>
     <style>
-        @keyframes glitter {
-            0% { text-shadow: 0px 0px 5px #fff, 0px 0px 10px #ff0, 0px 0px 15px #ff4500; }
-            50% { text-shadow: 0px 0px 10px #ff4500, 0px 0px 20px #ff0, 0px 0px 25px #ff4500; }
-            100% { text-shadow: 0px 0px 5px #fff, 0px 0px 10px #ff0, 0px 0px 15px #ff4500; }
+        :root {
+            --bg: #070707;
+            --panel: #0c0c0c;
+            --text: #f8f8f8;
+            --muted: #e6e6e6;
+            --yellow: #f7b400;
+            --yellow-2: #ffb400;
+            --shadow: rgba(255, 180, 0, 0.35);
         }
 
-        @keyframes border-glow {
-            0% { border-color: #ff0; box-shadow: 0 0 10px #ff0; }
-            50% { border-color: #ff4500; box-shadow: 0 0 20px #ff4500; }
-            100% { border-color: #ff0; box-shadow: 0 0 10px #ff0; }
+        * {
+            box-sizing: border-box;
         }
 
-
-*{
-    padding: 0;
-    margin: 0;
-}
         body {
-            font-family: Arial, sans-serif;
-            background-color: #222;
-            color: white;
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .page {
+            position: relative;
+            min-height: 100vh;
+            background: #050505;
+            overflow: hidden;
+            padding: 30px 20px 60px;
+        }
+
+        .blob {
+            position: absolute;
+            background: var(--yellow);
+            border-radius: 48% 52% 58% 42% / 52% 46% 54% 48%;
+            opacity: 0.96;
+            z-index: 0;
+        }
+
+        .blob-1 {
+            width: 180px;
+            height: 110px;
+            right: 34px;
+            top: 16px;
+            transform: rotate(14deg);
+        }
+
+        .blob-2 {
+            width: 180px;
+            height: 120px;
+            left: 20px;
+            bottom: 16px;
+            transform: rotate(-10deg);
+        }
+
+        .blob-3 {
+            width: 220px;
+            height: 140px;
+            right: 60px;
+            bottom: 54px;
+            transform: rotate(18deg);
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .brand-inner {
+            position: relative;
+            display: inline-block;
+            padding: 0 16px;
+        }
+
+        .brand-mark {
+            font-size: clamp(3.2rem, 7vw, 9rem);
+            font-weight: 900;
+            letter-spacing: 0.02em;
+            line-height: 0.9;
+            color: #fff;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-mark .o {
+            position: relative;
+            display: inline-block;
+            width: 0.7em;
+            height: 0.7em;
+            border-radius: 50%;
+            border: 6px solid #fff;
+            background: transparent;
+            margin: 0 0.06em;
+        }
+
+        .brand-mark .o::before {
+            content: "";
+            position: absolute;
+            inset: 0.18em;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        .brand-mark .z {
+            display: inline-block;
+            position: relative;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .brand-mark .z::before {
+            content: "";
+            position: absolute;
+            width: 0.5em;
+            height: 0.5em;
+            border-radius: 50%;
+            background: var(--yellow);
+            right: -0.08em;
+            top: 0.08em;
+            box-shadow: 0 0 0 5px #fff;
+        }
+
+        .brand-sub {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+            margin-top: -8px;
+            font-size: 0.84rem;
+            letter-spacing: 0.35rem;
+            text-transform: uppercase;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .brand-sub .mini {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #fff;
+            border: 4px solid #f0f0f0;
+        }
+
+        h1 {
+            margin: 18px 0 0;
             text-align: center;
+            font-size: clamp(3.1rem, 7vw, 8rem);
+            line-height: 1;
+            letter-spacing: -0.05em;
+            color: var(--yellow);
+            font-weight: 900;
+            text-transform: none;
+        }
+
+        .script {
+            text-align: center;
+            font-size: clamp(1.7rem, 3vw, 3.3rem);
+            font-family: "Segoe Print", "Bradley Hand", cursive;
+            color: #f5f5f5;
+            font-style: italic;
+            margin-top: 10px;
+            margin-bottom: 24px;
+            opacity: 0.95;
+            text-shadow: 0 3px 0 rgba(255,255,255,0.12);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .menu-column {
+            padding: 0 10px;
+        }
+
+        .section {
+            margin-bottom: 38px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 3vw, 3.2rem);
+            font-weight: 900;
+            color: var(--yellow);
+            margin: 0 0 18px;
+            letter-spacing: -0.04em;
+        }
+
+        .subsection-title {
+            font-size: clamp(1.6rem, 2.2vw, 2.5rem);
+            font-weight: 900;
+            color: #fff;
+            margin: 18px 0 10px;
+        }
+
+        .items {
+            list-style: none;
             margin: 0;
             padding: 0;
         }
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
+        .items li {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 0;
+            font-size: clamp(1.15rem, 1.7vw, 1.9rem);
+            line-height: 1.3;
         }
 
-        h1 {
-            background: linear-gradient(45deg, #ff0, #ff4500, #ff0);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            font-size: 2.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            animation: glitter 2s infinite alternate, border-glow 2s infinite alternate;
-            border: 5px solid;
-            display: inline-block;
-            margin-top: 20px;
-        }
-
-        h2 {
-            background: linear-gradient(90deg, #ff4500, #ff0);
-            color: #222;
-            padding: 10px;
-            border-radius: 10px;
-            font-size: 1.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            display: inline-block;
-            margin-bottom: 20px;
-            box-shadow: 0px 0px 10px rgba(255, 255, 0, 0.7);
-        }
-
-        .section {
-            margin: 30px 0;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-
-        .images {
+        .items li .name {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            align-items: center;
             gap: 10px;
+            min-width: 0;
+            font-weight: 700;
         }
 
-        .images img {
+        .items li .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--yellow);
+            flex-shrink: 0;
+            box-shadow: 0 0 0 3px rgba(247,180,0,0.2);
+        }
+
+        .items li .price {
+            font-weight: 800;
+            color: #fff;
+            white-space: nowrap;
+            font-size: clamp(1.05rem, 1.5vw, 1.5rem);
+        }
+
+        .side-panel {
+            position: relative;
+            min-height: 540px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 30px;
+        }
+
+        .feature-stack {
+            position: relative;
+            width: min(100%, 520px);
+            height: 760px;
+        }
+
+        .photo-card {
+            position: absolute;
+            overflow: hidden;
+            border-radius: 45% 55% 50% 50% / 41% 42% 58% 59%;
+            border: 7px solid rgba(247,180,0,1);
+            box-shadow: 0 18px 25px rgba(0,0,0,0.3);
+            background: #111;
+        }
+
+        .photo-card img {
             width: 100%;
-            max-width: 350px;
-            height: auto;
-            border-radius: 10px;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
-        .images img:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
-        }
-        .footer {
-            background-color: #111;
-            padding: 20px;
-            text-align: center;
-            margin-top: 40px;
-            width: 100%;
-            color: #ff0;
-            font-size: 1.2rem;
+        .card-a {
+            width: 82%;
+            height: 280px;
+            left: 8%;
+            top: 4%;
         }
 
-        .footer a {
-            color: #ff4500;
-            text-decoration: none;
-            margin: 0 10px;
-            transition: color 0.3s ease;
+        .card-b {
+            width: 72%;
+            height: 290px;
+            left: 27%;
+            top: 38%;
+            border-radius: 48% 52% 54% 46% / 40% 49% 51% 60%;
         }
 
+        .card-c {
+            width: 70%;
+            height: 260px;
+            left: 8%;
+            top: 62%;
+            border-radius: 45% 55% 51% 49% / 48% 40% 60% 52%;
+        }
 
-        @media (max-width: 768px) {
-            .images img {
-                max-width: 100%;
-                border-radius: 15px;
+        .yellow-curve {
+            position: absolute;
+            width: 340px;
+            height: 220px;
+            border: 10px solid var(--yellow);
+            border-color: var(--yellow) transparent transparent transparent;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            transform: rotate(-15deg);
+            right: 0;
+            top: 280px;
+            z-index: 0;
+            opacity: 0.9;
+        }
+
+        .yellow-curve.two {
+            transform: rotate(18deg);
+            right: 10px;
+            top: 10px;
+            width: 280px;
+            height: 210px;
+            border-color: var(--yellow) transparent transparent transparent;
+        }
+
+        @media (max-width: 900px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
             }
-            h1 {
-                font-size: 2.2rem;
-                padding: 15px;
+
+            .side-panel {
+                order: -1;
+                min-height: 420px;
             }
-            h2 {
-                font-size: 1.5rem;
-                padding: 8px;
+
+            .feature-stack {
+                height: 520px;
+            }
+
+            .card-a {
+                width: 72%;
+                height: 220px;
+            }
+
+            .card-b {
+                width: 70%;
+                height: 240px;
+                left: 30%;
+            }
+
+            .card-c {
+                width: 74%;
+                height: 200px;
+                left: 10%;
+                top: 58%;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .page {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .brand-mark {
+                font-size: 2.9rem;
+            }
+
+            .brand-sub {
+                letter-spacing: 0.15rem;
+                font-size: 0.7rem;
+            }
+
+            .items li {
+                gap: 8px;
+            }
+
+            .items li .name {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Ozone lounge</h1>
-        
-        <div class="section">
-            <h2>FOODS</h2>
-            <div class="images">
-                <img src="pics/1.png" alt="Food 1">
-                <img src="pics/2.png" alt="Food 2">
-                <img src="pics/3.png" alt="Food 3">
-                <img src="pics/4.png" alt="Food 4">
-                <img src="pics/5.png" alt="Food 5">
+    <div class="page">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+
+        <div class="content">
+            <div class="brand">
+                <div class="brand-inner">
+                    <div class="brand-mark">
+                        <span class="o"></span>
+                        <span class="z">ZONE</span>
+                        <span class="z">LOUNGE</span>
+                    </div>
+                    <div class="brand-sub">
+                        <span class="mini"></span>
+                        <span>Food Menu</span>
+                    </div>
+                </div>
+            </div>
+
+            <h1>Food Menu</h1>
+            <div class="script">Ozone Lounge Valley Arcade</div>
+
+            <div class="menu-grid">
+                <div class="menu-column">
+                    <div class="section">
+                        <h2 class="section-title">Main Course</h2>
+
+                        <h3 class="subsection-title">Chicken</h3>
+                        <ul class="items">
+                            <li><span class="name"><span class="dot"></span>Chicken Broilerfull</span><span class="price">1600</span></li>
+                            <li><span class="name"><span class="dot"></span>Chicken Broiler 1/2</span><span class="price">800</span></li>
+                            <li><span class="name"><span class="dot"></span>Chicken Stew</span><span class="price">750</span></li>
+                            <li><span class="name"><span class="dot"></span>Chicken Kienyeji 1/2</span><span class="price">1000</span></li>
+                            <li><span class="name"><span class="dot"></span>Chicken Kienyeji full</span><span class="price">2000</span></li>
+                            <li><span class="name"><span class="dot"></span>Koroga Chicken</span><span class="price">2200</span></li>
+                            <li><span class="name"><span class="dot"></span>Chicken Wings</span><span class="price">900</span></li>
+                            <li><span class="name"><span class="dot"></span>Chicken Stew Ugali</span><span class="price">900</span></li>
+                            <li><span class="name"><span class="dot"></span>Chicken Stew Rice</span><span class="price">900</span></li>
+                        </ul>
+
+                        <h3 class="subsection-title">Beef</h3>
+                        <ul class="items">
+                            <li><span class="name"><span class="dot"></span>Beef Stew/dry fry 1/2kg</span><span class="price">1400</span></li>
+                            <li><span class="name"><span class="dot"></span>Beef stew/Dry Fry 1kg</span><span class="price">2800</span></li>
+                            <li><span class="name"><span class="dot"></span>Choma Majimaji</span><span class="price">2800</span></li>
+                            <li><span class="name"><span class="dot"></span>Anti Theft 1kg</span><span class="price">2800</span></li>
+                            <li><span class="name"><span class="dot"></span>Anti Theft 1/2 Kg</span><span class="price">1400</span></li>
+                            <li><span class="name"><span class="dot"></span>Beef Stew with Ugali</span><span class="price">1000</span></li>
+                            <li><span class="name"><span class="dot"></span>Beef Stew with Rice</span><span class="price">1000</span></li>
+                        </ul>
+
+                        <h3 class="subsection-title">Pork</h3>
+                        <ul class="items">
+                            <li><span class="name"><span class="dot"></span>Pork Choma/Dry Fry 1/2kg</span><span class="price">900</span></li>
+                            <li><span class="name"><span class="dot"></span>Pork Choma/Dry Fry 1kg</span><span class="price">1800</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h2 class="section-title">Fish</h2>
+                        <ul class="items">
+                            <li><span class="name"><span class="dot"></span>Tilapia</span><span class="price">1400</span></li>
+                            <li><span class="name"><span class="dot"></span>Fish Fillet</span><span class="price">500</span></li>
+                        </ul>
+
+                        <h3 class="subsection-title">Goat</h3>
+                        <ul class="items">
+                            <li><span class="name"><span class="dot"></span>Goat Arm 1/2Kg</span><span class="price">950</span></li>
+                            <li><span class="name"><span class="dot"></span>Goat Arm 1Kg</span><span class="price">1900</span></li>
+                            <li><span class="name"><span class="dot"></span>Goat Ribs 1/2Kg</span><span class="price">950</span></li>
+                            <li><span class="name"><span class="dot"></span>Goat Ribs 1Kg</span><span class="price">1900</span></li>
+                        </ul>
+
+                        <h3 class="subsection-title">Bittings</h3>
+                        <ul class="items">
+                            <li><span class="name"><span class="dot"></span>Fish Fingers w MiniFries</span><span class="price">850</span></li>
+                            <li><span class="name"><span class="dot"></span>Pork Bittings w MiniFries</span><span class="price">900</span></li>
+                            <li><span class="name"><span class="dot"></span>Beef Samosa2pcs</span><span class="price">200</span></li>
+                            <li><span class="name"><span class="dot"></span>Chicken Samosa 2pcs</span><span class="price">250</span></li>
+                            <li><span class="name"><span class="dot"></span>Beef Sausages2pcs</span><span class="price">200</span></li>
+                            <li><span class="name"><span class="dot"></span>Choma Sausages</span><span class="price">200</span></li>
+                            <li><span class="name"><span class="dot"></span>Mutura</span><span class="price">300</span></li>
+                            <li><span class="name"><span class="dot"></span>Mshikaki</span><span class="price">300</span></li>
+                            <li><span class="name"><span class="dot"></span>Nundu 1/2kg</span><span class="price">1400</span></li>
+                            <li><span class="name"><span class="dot"></span>Nundu 1kg</span><span class="price">2800</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h2 class="section-title">Accompaniments</h2>
+                        <ul class="items">
+                            <li><span class="name"><span class="dot"></span>Chips</span><span class="price">300</span></li>
+                            <li><span class="name"><span class="dot"></span>Chips Masala</span><span class="price">350</span></li>
+                            <li><span class="name"><span class="dot"></span>Spicy Chips</span><span class="price">350</span></li>
+                            <li><span class="name"><span class="dot"></span>Ugali</span><span class="price">200</span></li>
+                            <li><span class="name"><span class="dot"></span>Mukimo</span><span class="price">350</span></li>
+                            <li><span class="name"><span class="dot"></span>Rice</span><span class="price">200</span></li>
+                            <li><span class="name"><span class="dot"></span>Chapati 2pcs</span><span class="price">200</span></li>
+                            <li><span class="name"><span class="dot"></span>Vegetable Rice</span><span class="price">350</span></li>
+                            <li><span class="name"><span class="dot"></span>Sauté</span><span class="price">350</span></li>
+                            <li><span class="name"><span class="dot"></span>Plantain</span><span class="price">350</span></li>
+                        </ul>
+
+                        <h2 class="section-title" style="margin-top: 36px;">Vegetables</h2>
+                        <ul class="items">
+                            <li><span class="name"><span class="dot"></span>Managu</span><span class="price">300</span></li>
+                            <li><span class="name"><span class="dot"></span>Creamed Managu</span><span class="price">350</span></li>
+                            <li><span class="name"><span class="dot"></span>Spinach</span><span class="price">200</span></li>
+                            <li><span class="name"><span class="dot"></span>Creamed Spinach</span><span class="price">300</span></li>
+                            <li><span class="name"><span class="dot"></span>Collard Greens</span><span class="price">200</span></li>
+                            <li><span class="name"><span class="dot"></span>Cabbage</span><span class="price">200</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="side-panel">
+                    <div class="yellow-curve"></div>
+                    <div class="yellow-curve two"></div>
+                    <div class="feature-stack">
+                        <div class="photo-card card-a">
+                            <img src="1.png" alt="Food menu image 1">
+                        </div>
+                        <div class="photo-card card-b">
+                            <img src="2.png" alt="Food menu image 2">
+                        </div>
+                        <div class="photo-card card-c">
+                            <img src="3.png" alt="Food menu image 3">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <div class="section">
-            <h2>DRINKS</h2>
-            <div class="images">
-                <img src="pics/1 (1).png" alt="Drink 1">
-                <img src="pics/2 (1).png" alt="Drink 1">
-                <img src="pics/3 (1).png" alt="Drink 1">
-                <img src="pics/4 (1).png" alt="Drink 1">
-                <img src="pics/5 (1).png" alt="Drink 1">
-                <img src="pics/6.png" alt="Drink 1">
-                <img src="pics/7.png" alt="Drink 1">
-                <img src="pics/8.png" alt="Drink 1">
-                <img src="pics/9.png" alt="Drink 1">
-                <img src="pics/10.png" alt="Drink 1">
-                <img src="pics/11.png" alt="Drink 1">
-            </div>
-        </div>
-        
-
-
-        <footer class="footer">
-        
-            <p>&copy; 2026 Ozone lounge. All rights reserved.</p>
-        </footer>
-
-
     </div>
 </body>
 </html>
