@@ -3,43 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ozone Lounge | Menu - Valley Arcade, Lavington</title>
+    <title>Ozone Lounge Menu | Valley Arcade, Lavington</title>
+    <!-- FontAwesome for Social & Contact Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Great+Vibes&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-dark: #0b0b0d;
-            --bg-card: #16161a;
-            --gold-primary: #f5a623;
-            --gold-light: #ffd27d;
-            --gold-dark: #c87f0a;
-            --text-light: #ffffff;
-            --text-muted: #a0a0ab;
-            --whatsapp-green: #25D366;
+            --gold: #f5a623;
+            --gold-light: #ffd166;
+            --dark-bg: #0d0d0d;
+            --card-bg: #171717;
+            --text-light: #f8f9fa;
         }
 
         * {
-            box-sizing: border-box;
-            margin: 0;
             padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            margin: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-dark);
-            background-image: radial-gradient(circle at top, #1f1a10 0%, var(--bg-dark) 45%);
+            font-family: 'Montserrat', Arial, sans-serif;
+            background-color: var(--dark-bg);
             color: var(--text-light);
             text-align: center;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            padding-bottom: 20px;
         }
 
-        /* Header Branding */
-        .header {
-            padding: 28px 16px 14px;
+        /* Header Styling */
+        header {
+            padding: 25px 15px 15px;
+            background: radial-gradient(circle at center, #261c0a 0%, #0d0d0d 75%);
+            border-bottom: 1px solid rgba(245, 166, 35, 0.25);
         }
 
         .brand-title {
@@ -47,86 +45,82 @@
             font-weight: 800;
             letter-spacing: 3px;
             text-transform: uppercase;
-            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-light));
+            background: linear-gradient(45deg, #fff, var(--gold), var(--gold-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 4px 20px rgba(245, 166, 35, 0.25);
+            text-shadow: 0px 4px 15px rgba(245, 166, 35, 0.25);
         }
 
         .brand-subtitle {
-            font-size: 0.9rem;
-            color: var(--gold-primary);
-            letter-spacing: 2px;
+            font-family: 'Great Vibes', cursive;
+            color: var(--gold);
+            font-size: 1.7rem;
+            margin-top: 2px;
+            letter-spacing: 1px;
+        }
+
+        .location-tag {
+            font-size: 0.78rem;
+            color: #aaa;
+            margin-top: 4px;
+            letter-spacing: 1.2px;
             text-transform: uppercase;
-            margin-top: 4px;
-            font-weight: 600;
         }
 
-        .brand-location {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-
-        /* Sticky Floating Top Toggle Buttons */
-        .sticky-nav-wrapper {
+        /* Floating / Sticky Top Navigation Buttons */
+        .sticky-nav {
             position: sticky;
-            top: 12px;
+            top: 0;
             z-index: 1000;
-            padding: 6px 16px;
+            background: rgba(13, 13, 13, 0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 12px 15px;
             display: flex;
             justify-content: center;
-        }
-
-        .nav-toggle {
-            display: inline-flex;
-            background: rgba(22, 22, 26, 0.88);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(245, 166, 35, 0.35);
-            border-radius: 50px;
-            padding: 5px;
-            gap: 6px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.65);
-            width: 100%;
-            max-width: 360px;
+            gap: 12px;
+            border-bottom: 1px solid rgba(245, 166, 35, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
         }
 
         .tab-btn {
             flex: 1;
-            border: none;
-            background: transparent;
-            color: var(--text-muted);
-            font-size: 1rem;
-            font-weight: 700;
+            max-width: 190px;
             padding: 12px 18px;
-            border-radius: 40px;
+            border: 2px solid var(--gold);
+            background-color: transparent;
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            letter-spacing: 0.5px;
         }
 
         .tab-btn.active {
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-            color: #0b0b0d;
-            box-shadow: 0 4px 15px rgba(245, 166, 35, 0.4);
+            background: linear-gradient(90deg, #ff8c00, var(--gold));
+            color: #000;
+            box-shadow: 0 0 15px rgba(245, 166, 35, 0.6);
+            transform: scale(1.03);
         }
 
-        /* Main Menu Container */
+        /* Main Container & Sections */
         .container {
             width: 94%;
-            max-width: 900px;
-            margin: 12px auto 30px;
-            flex: 1;
+            max-width: 1100px;
+            margin: 15px auto;
         }
 
         .menu-section {
             display: none;
-            animation: fadeIn 0.3s ease-in-out;
+            animation: fadeIn 0.35s ease-in-out;
         }
 
         .menu-section.active {
@@ -139,64 +133,57 @@
         }
 
         .section-heading {
+            color: var(--gold);
             font-size: 1.3rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--gold-light);
-            margin: 12px 0 6px;
+            margin: 15px 0 5px;
         }
 
-        .tap-hint {
+        .zoom-hint {
             font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 16px;
+            color: #888;
+            margin-bottom: 18px;
         }
 
-        /* Menu Images Grid */
+        /* Menu Image Grid */
         .images {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 18px;
         }
 
         .images img {
             width: 100%;
-            max-width: 550px;
+            max-width: 480px;
             height: auto;
             border-radius: 14px;
-            background-color: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-            cursor: zoom-in;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border: 1px solid rgba(245, 166, 35, 0.3);
+            background-color: var(--card-bg);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
-        @media (min-width: 768px) {
-            .images {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .images img {
-                max-width: 420px;
-            }
-            .images img:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 12px 28px rgba(245, 166, 35, 0.2);
-            }
+        .images img:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(245, 166, 35, 0.35);
         }
 
-        /* Lightbox Modal for Mobile Tap-to-Zoom */
+        /* Fullscreen Tap-to-Zoom Modal */
         .lightbox {
             display: none;
             position: fixed;
-            inset: 0;
             z-index: 2000;
-            background: rgba(0, 0, 0, 0.94);
-            align-items: center;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
             justify-content: center;
-            padding: 12px;
+            align-items: center;
+            padding: 10px;
         }
 
         .lightbox.open {
@@ -210,252 +197,236 @@
             object-fit: contain;
         }
 
-        .lightbox-close {
-            position: fixed;
-            top: 16px;
-            right: 16px;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            background: rgba(22, 22, 26, 0.85);
+        .close-lightbox {
+            position: absolute;
+            top: 18px;
+            right: 22px;
             color: #fff;
-            font-size: 1.5rem;
-            line-height: 1;
+            font-size: 2.2rem;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: rgba(0,0,0,0.6);
+            width: 44px;
+            height: 44px;
+            line-height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
         }
 
-        /* Footer & Contacts */
+        /* Footer Styling */
         .footer {
-            background-color: #111115;
-            border-top: 1px solid rgba(245, 166, 35, 0.25);
-            padding: 32px 16px 28px;
-            margin-top: auto;
+            background-color: #121212;
+            padding: 35px 20px;
+            margin-top: 45px;
+            border-top: 2px solid var(--gold);
+            border-radius: 20px 20px 0 0;
         }
 
-        .footer-title {
-            color: var(--gold-primary);
-            font-size: 1.1rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
+        .footer h3 {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 16px;
         }
 
-        .contact-actions {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            max-width: 500px;
-            margin: 0 auto 22px;
-        }
-
-        .action-btn {
-            flex: 1 1 210px;
+        .call-btn {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
             gap: 10px;
-            padding: 13px 20px;
+            background: linear-gradient(90deg, #ff8c00, var(--gold));
+            color: #000;
+            font-weight: 800;
+            font-size: 1.05rem;
+            padding: 13px 26px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 0.95rem;
-            transition: transform 0.2s ease, opacity 0.2s ease;
+            margin-bottom: 22px;
+            box-shadow: 0 4px 15px rgba(245, 166, 35, 0.4);
+            transition: transform 0.2s ease;
         }
 
-        .action-btn:active {
-            transform: scale(0.97);
-        }
-
-        .btn-call {
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-            color: #0b0b0d;
-        }
-
-        .btn-whatsapp {
-            background-color: var(--whatsapp-green);
-            color: #0b0b0d;
+        .call-btn:active {
+            transform: scale(0.96);
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            align-items: center;
             gap: 16px;
-            margin-bottom: 20px;
+            margin: 15px 0 25px;
+            flex-wrap: wrap;
         }
 
         .social-icon {
-            width: 46px;
-            height: 46px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            background: var(--bg-card);
-            border: 1px solid rgba(245, 166, 35, 0.3);
-            color: var(--gold-primary);
+            background-color: #1f1f1f;
+            border: 1px solid rgba(245, 166, 35, 0.4);
+            color: var(--text-light);
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.35rem;
             text-decoration: none;
-            transition: all 0.25s ease;
+            transition: all 0.3s ease;
         }
 
-        .social-icon:hover {
-            background: var(--gold-primary);
-            color: #0b0b0d;
-            transform: translateY(-3px);
-        }
+        .social-icon.instagram:hover { background: #E1306C; border-color: #E1306C; }
+        .social-icon.facebook:hover { background: #1877F2; border-color: #1877F2; }
+        .social-icon.whatsapp:hover { background: #25D366; border-color: #25D366; }
+        .social-icon.website:hover { background: var(--gold); color: #000; border-color: var(--gold); }
 
         .website-link {
-            display: inline-block;
-            color: var(--gold-light);
+            display: block;
+            color: var(--gold);
             text-decoration: none;
             font-size: 0.95rem;
-            margin-bottom: 14px;
-            border-bottom: 1px dashed rgba(245, 166, 35, 0.5);
-            padding-bottom: 2px;
+            margin-bottom: 12px;
+            font-weight: 600;
         }
 
         .copyright {
             font-size: 0.8rem;
-            color: var(--text-muted);
-            line-height: 1.5;
+            color: #777;
+            margin-top: 15px;
+        }
+
+        /* Floating WhatsApp Quick Button */
+        .floating-wa {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.9rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5);
+            z-index: 1500;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+
+        .floating-wa:hover {
+            transform: scale(1.08);
+        }
+
+        @media (max-width: 600px) {
+            .brand-title { font-size: 1.8rem; }
+            .brand-subtitle { font-size: 1.45rem; }
+            .images img { max-width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Brand Header -->
-    <header class="header">
-        <div class="brand-title">Ozone Lounge</div>
-        <div class="brand-subtitle">Premium Lounge • Cocktails • Vibe</div>
-        <div class="brand-location">Valley Arcade, Gitanga Road • Lavington</div>
+    <!-- Top Brand Header -->
+    <header>
+        <div class="brand-title">OZONE LOUNGE</div>
+        <div class="brand-subtitle">Valley Arcade</div>
+        <div class="location-tag"><i class="fa-solid fa-location-dot"></i> Gitanga Road, Lavington</div>
     </header>
 
-    <!-- Floating Top Buttons (Drinks / Foods Switcher) -->
-    <div class="sticky-nav-wrapper">
-        <nav class="nav-toggle" aria-label="Menu Category Switcher">
-            <button id="btn-drinks" class="tab-btn active" onclick="switchMenu('drinks')">
-                🍹 DRINKS
-            </button>
-            <button id="btn-foods" class="tab-btn" onclick="switchMenu('foods')">
-                🍽️ FOODS
-            </button>
-        </nav>
-    </div>
+    <!-- Floating Top Switcher Buttons -->
+    <nav class="sticky-nav">
+        <button class="tab-btn active" id="btn-drinks" onclick="switchMenu('drinks')">
+            <i class="fa-solid fa-martini-glass-citrus"></i> Drinks
+        </button>
+        <button class="tab-btn" id="btn-foods" onclick="switchMenu('foods')">
+            <i class="fa-solid fa-utensils"></i> Foods
+        </button>
+    </nav>
 
-    <!-- Menu Sections -->
-    <main class="container">
-
-        <!-- DRINKS SECTION -->
-        <section id="drinks-section" class="menu-section active">
+    <div class="container">
+        
+        <!-- ================= DRINKS MENU SECTION (drink-1.png to drink-12.png) ================= -->
+        <div id="drinks-section" class="menu-section active">
             <h2 class="section-heading">Drinks Menu</h2>
-            <p class="tap-hint">Tap any page to view fullscreen</p>
+            <p class="zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Tap any page to view full screen</p>
+            
             <div class="images">
-                <!-- Add or remove drink pages below as needed -->
-                <img src="images/drink-1.png" alt="Ozone Lounge Drinks Menu Page 1">
-                <img src="images/drink-2.png" alt="Ozone Lounge Drinks Menu Page 2" loading="lazy">
-                <img src="images/drink-3.png" alt="Ozone Lounge Drinks Menu Page 3" loading="lazy">
-                <img src="images/drink-4.png" alt="Ozone Lounge Drinks Menu Page 4" loading="lazy">
-                <img src="images/drink-5.png" alt="Ozone Lounge Drinks Menu Page 5" loading="lazy">
-                <img src="images/drink-6.png" alt="Ozone Lounge Drinks Menu Page 6" loading="lazy">
-                <img src="images/drink-7.png" alt="Ozone Lounge Drinks Menu Page 7" loading="lazy">
-                <img src="images/drink-8.png" alt="Ozone Lounge Drinks Menu Page 8" loading="lazy">
-                <img src="images/drink-9.png" alt="Ozone Lounge Drinks Menu Page 9" loading="lazy">
-                <img src="images/drink-10.png" alt="Ozone Lounge Drinks Menu Page 10" loading="lazy">
-                <img src="images/drink-11.png" alt="Ozone Lounge Drinks Menu Page 11" loading="lazy">
+                <img src="drink-1.png" alt="Drinks Menu Page 1" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="drink-2.png" alt="Drinks Menu Page 2" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="drink-3.png" alt="Drinks Menu Page 3" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="drink-4.png" alt="Drinks Menu Page 4" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="drink-5.png" alt="Drinks Menu Page 5" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="drink-6.png" alt="Drinks Menu Page 6" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="drink-7.png" alt="Drinks Menu Page 7" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="drink-8.png" alt="Drinks Menu Page 8" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="drink-9.png" alt="Drinks Menu Page 9" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="drink-10.png" alt="Drinks Menu Page 10" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="drink-11.png" alt="Drinks Menu Page 11" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="drink-12.png" alt="Drinks Menu Page 12" loading="lazy" onclick="openLightbox(this.src)">
             </div>
-        </section>
+        </div>
 
-        <!-- FOODS SECTION -->
-        <section id="foods-section" class="menu-section">
+        <!-- ================= FOODS MENU SECTION (food-1.png to food-5.png) ================= -->
+        <div id="foods-section" class="menu-section">
             <h2 class="section-heading">Food Menu</h2>
-            <p class="tap-hint">Tap any page to view fullscreen</p>
+            <p class="zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Tap any page to view full screen</p>
+            
             <div class="images">
-                <!-- Add or remove food pages below to match your exact number of PNGs -->
-                <img src="images/food-1.png" alt="Ozone Lounge Food Menu Page 1">
-                <img src="images/food-2.png" alt="Ozone Lounge Food Menu Page 2" loading="lazy">
-                <img src="images/food-3.png" alt="Ozone Lounge Food Menu Page 3" loading="lazy">
-                <img src="images/food-4.png" alt="Ozone Lounge Food Menu Page 4" loading="lazy">
-                <img src="images/food-5.png" alt="Ozone Lounge Food Menu Page 5" loading="lazy">
-                <img src="images/food-6.png" alt="Ozone Lounge Food Menu Page 6" loading="lazy">
+                <img src="food-1.png" alt="Food Menu Page 1" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="food-2.png" alt="Food Menu Page 2" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="food-3.png" alt="Food Menu Page 3" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="food-4.png" alt="Food Menu Page 4" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="food-5.png" alt="Food Menu Page 5" loading="lazy" onclick="openLightbox(this.src)">
             </div>
-        </section>
+        </div>
 
-    </main>
-
-    <!-- Fullscreen Image Viewer (Lightbox) -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <button class="lightbox-close" aria-label="Close fullscreen">&times;</button>
-        <img id="lightbox-img" src="" alt="Expanded Menu Page">
     </div>
 
-    <!-- Footer with Call, WhatsApp, Socials & Website -->
+    <!-- Fullscreen Image Zoom Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-img" src="" alt="Full screen menu">
+    </div>
+
+    <!-- Floating WhatsApp Button (Bottom Right) -->
+    <a href="https://wa.me/254759881128?text=Hello%20Ozone%20Lounge,%20I%20would%20like%20to%20place%20an%20order" 
+       class="floating-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer with Call to Order & Social Links -->
     <footer class="footer">
-        <div class="footer-title">Order or Reserve a Table</div>
-
-        <div class="contact-actions">
-            <!-- Call to Order Button -->
-            <a href="tel:+254759881128" class="action-btn btn-call">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/>
-                </svg>
-                Call: 0759 881 128
-            </a>
-
-            <!-- WhatsApp Button -->
-            <a href="https://wa.me/254759881128?text=Hello%20Ozone%20Lounge%2C%20I%20would%20like%20to%20place%20an%20order%20or%20reserve%20a%20table." target="_blank" rel="noopener noreferrer" class="action-btn btn-whatsapp">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12.03 2C6.52 2 2.05 6.47 2.05 11.98c0 1.76.46 3.48 1.33 4.99L2 22l5.18-1.36a9.94 9.94 0 004.85 1.26h.01c5.51 0 9.98-4.47 9.98-9.98 0-2.67-1.04-5.17-2.92-7.06A9.93 9.93 0 0012.03 2zm5.82 14.28c-.24.68-1.41 1.3-1.95 1.38-.5.08-1.13.11-1.83-.11-.42-.14-.97-.32-1.66-.62-2.92-1.26-4.83-4.21-4.97-4.4-.15-.2-1.19-1.58-1.19-3.02 0-1.44.75-2.14 1.02-2.44.27-.29.59-.37.79-.37.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.83 2.03.9 2.18.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.93-1.15.2-.29.39-.24.66-.15.27.1 1.71.81 2 .95.29.15.49.22.56.34.07.12.07.71-.17 1.39z"/>
-                </svg>
-                WhatsApp Us
-            </a>
-        </div>
+        <h3>Order & Reservations</h3>
+        
+        <!-- Call to Order Button -->
+        <a href="tel:0759881128" class="call-btn">
+            <i class="fa-solid fa-phone-volume"></i> Call to Order: 0759 881 128
+        </a>
 
         <!-- Social Media Icons -->
         <div class="social-links">
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/Ozonelounge_lavington" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.64-.07-4.85 0-3.2.01-3.58.07-4.85C2.38 3.86 3.9 2.31 7.15 2.16 8.42 2.1 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1018.16 12 6.16 6.16 0 0012 5.84zM12 16a4 4 0 114-4 4 4 0 01-4 4zm6.41-11.85a1.44 1.44 0 101.44 1.44 1.44 1.44 0 00-1.44-1.44z"/>
-                </svg>
+            <a href="https://www.instagram.com/Ozonelounge_lavington" target="_blank" rel="noopener noreferrer" class="social-icon instagram" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
             </a>
-
-            <!-- Facebook -->
-            <a href="https://www.facebook.com/Ozonelounge_lavington" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M22.68 0H1.32C.59 0 0 .59 0 1.32v21.36C0 23.41.59 24 1.32 24h11.5v-9.29H9.69v-3.62h3.13V8.41c0-3.1 1.89-4.79 4.66-4.79 1.32 0 2.46.1 2.79.14v3.24h-1.92c-1.5 0-1.79.72-1.79 1.76v2.31h3.59l-.47 3.62h-3.12V24h6.12c.73 0 1.32-.59 1.32-1.32V1.32C24 .59 23.41 0 22.68 0z"/>
-                </svg>
+            <a href="https://www.facebook.com/Ozonelounge_lavington" target="_blank" rel="noopener noreferrer" class="social-icon facebook" aria-label="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
             </a>
-
-            <!-- Website Globe Icon -->
-            <a href="https://ozonelounge.co.ke/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Website">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                </svg>
+            <a href="https://wa.me/254759881128" target="_blank" rel="noopener noreferrer" class="social-icon whatsapp" aria-label="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="https://ozonelounge.co.ke/" target="_blank" rel="noopener noreferrer" class="social-icon website" aria-label="Website">
+                <i class="fa-solid fa-globe"></i>
             </a>
         </div>
 
-        <div>
-            <a href="https://ozonelounge.co.ke/" target="_blank" rel="noopener noreferrer" class="website-link">
-                www.ozonelounge.co.ke
-            </a>
-        </div>
+        <a href="https://ozonelounge.co.ke/" target="_blank" rel="noopener noreferrer" class="website-link">
+            www.ozonelounge.co.ke
+        </a>
 
-        <p class="copyright">
-            Valley Arcade, Gitanga Road, Lavington, Nairobi<br>
-            &copy; 2026 Ozone Lounge. All rights reserved.
-        </p>
+        <p class="copyright">&copy; 2026 Ozone Lounge Lavington. All rights reserved.</p>
     </footer>
 
+    <!-- JavaScript for Tab Switching & Image Zoom -->
     <script>
-        // Switch between Drinks and Foods tabs
         function switchMenu(category) {
             const drinksSection = document.getElementById('drinks-section');
             const foodsSection = document.getElementById('foods-section');
@@ -478,21 +449,15 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Tap-to-Zoom Lightbox functionality
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-
-        document.querySelectorAll('.images img').forEach(img => {
-            img.addEventListener('click', () => {
-                lightboxImg.src = img.src;
-                lightboxImg.alt = img.alt;
-                lightbox.classList.add('open');
-            });
-        });
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imageSrc;
+            lightbox.classList.add('open');
+        }
 
         function closeLightbox() {
-            lightbox.classList.remove('open');
-            lightboxImg.src = '';
+            document.getElementById('lightbox').classList.remove('open');
         }
     </script>
 </body>
