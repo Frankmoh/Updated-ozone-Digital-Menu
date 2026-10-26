@@ -1,485 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ozone Lounge - Food Menu</title>
-  <style>
-    :root {
-      --bg: #050505;
-      --text: #f5f5f5;
-      --yellow: #f8b100;
-      --yellow-soft: #f9c845;
-      --white: #ffffff;
-      --muted: #ececec;
-      --shadow: rgba(0, 0, 0, 0.28);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozone Lounge Kilimani</title>
+    <style>
+        @keyframes glitter {
+            0% { text-shadow: 0px 0px 5px #fff, 0px 0px 10px #ff0, 0px 0px 15px #ff4500; }
+            50% { text-shadow: 0px 0px 10px #ff4500, 0px 0px 20px #ff0, 0px 0px 25px #ff4500; }
+            100% { text-shadow: 0px 0px 5px #fff, 0px 0px 10px #ff0, 0px 0px 15px #ff4500; }
+        }
 
-    * { box-sizing: border-box; }
+        @keyframes border-glow {
+            0% { border-color: #ff0; box-shadow: 0 0 10px #ff0; }
+            50% { border-color: #ff4500; box-shadow: 0 0 20px #ff4500; }
+            100% { border-color: #ff0; box-shadow: 0 0 10px #ff0; }
+        }
 
-    html, body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      min-height: 100%;
-    }
 
-    body {
-      min-height: 100vh;
-      background: var(--bg);
-    }
+*{
+    padding: 0;
+    margin: 0;
+}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
 
-    .page {
-      position: relative;
-      min-height: 100vh;
-      background: #040404;
-      overflow: hidden;
-      padding: 24px 18px 40px;
-    }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
 
-    .blob {
-      position: absolute;
-      background: var(--yellow);
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.98;
-    }
+        h1 {
+            background: linear-gradient(45deg, #ff0, #ff4500, #ff0);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 2.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: glitter 2s infinite alternate, border-glow 2s infinite alternate;
+            border: 5px solid;
+            display: inline-block;
+            margin-top: 20px;
+        }
 
-    .blob.top-right {
-      width: 200px;
-      height: 120px;
-      right: 14px;
-      top: 12px;
-      border-radius: 50% 50% 48% 52% / 52% 44% 56% 48%;
-      transform: rotate(14deg);
-    }
+        h2 {
+            background: linear-gradient(90deg, #ff4500, #ff0);
+            color: #222;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 0, 0.7);
+        }
 
-    .blob.bottom-left {
-      width: 190px;
-      height: 130px;
-      left: 8px;
-      bottom: 10px;
-      border-radius: 48% 52% 42% 58% / 46% 54% 46% 54%;
-      transform: rotate(-18deg);
-    }
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
 
-    .page-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 1280px;
-      margin: 0 auto;
-    }
+        .images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
 
-    .brand-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 4px;
-    }
+        .images img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
 
-    .brand-block {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
+        .images img:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+        }
+        .footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+            width: 100%;
+            color: #ff0;
+            font-size: 1.2rem;
+        }
 
-    .logo-mark {
-      position: relative;
-      width: 170px;
-      height: 96px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+        .footer a {
+            color: #ff4500;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
 
-    .logo-mark .ring {
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      border: 8px solid #fff;
-      border-radius: 50%;
-      left: 8px;
-      top: -16px;
-      background: transparent;
-    }
 
-    .logo-mark .ring::before {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      width: 54px;
-      height: 54px;
-      left: 26px;
-      top: 25px;
-      border: 8px solid #fff;
-      background: #000;
-    }
-
-    .logo-mark .ring::after {
-      content: "";
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--yellow);
-      right: 18px;
-      top: 40px;
-      box-shadow: 0 0 0 5px #fff;
-    }
-
-    .brand-name {
-      font-size: clamp(2.8rem, 5vw, 6.5rem);
-      line-height: 0.82;
-      letter-spacing: -0.08em;
-      text-transform: uppercase;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 0.08em;
-      font-weight: 900;
-      flex-wrap: wrap;
-    }
-
-    .brand-name .dot-ring {
-      position: relative;
-      display: inline-block;
-      width: 0.72em;
-      height: 0.72em;
-      border: 6px solid #fff;
-      border-radius: 50%;
-      background: #000;
-      margin-right: 0.04em;
-    }
-
-    .brand-name .dot-ring::before {
-      content: "";
-      position: absolute;
-      inset: 0.18em;
-      background: #000;
-      border-radius: 50%;
-    }
-
-    .brand-name .z {
-      position: relative;
-      display: inline-block;
-    }
-
-    .brand-name .z::after {
-      content: "";
-      position: absolute;
-      width: 0.42em;
-      height: 0.42em;
-      right: -0.12em;
-      top: 0.08em;
-      border-radius: 50%;
-      background: var(--yellow);
-      box-shadow: 0 0 0 5px rgba(255,255,255,1);
-    }
-
-    .brand-name .lounge {
-      display: block;
-      font-size: 0.44em;
-      letter-spacing: 0.14em;
-      margin-top: 4px;
-      text-align: center;
-    }
-
-    h1 {
-      text-align: center;
-      margin: 10px 0 0;
-      color: var(--yellow);
-      font-size: clamp(3.2rem, 7vw, 8rem);
-      line-height: 0.9;
-      letter-spacing: -0.06em;
-      font-weight: 900;
-    }
-
-    .script {
-      text-align: center;
-      margin-top: 8px;
-      font-family: "Segoe Print", "Bradley Hand", cursive;
-      font-style: italic;
-      font-size: clamp(1.8rem, 3vw, 3.2rem);
-      color: var(--white);
-      opacity: 0.96;
-    }
-
-    .menu-grid {
-      display: grid;
-      grid-template-columns: 1.18fr 0.82fr;
-      gap: 24px;
-      align-items: start;
-      margin-top: 20px;
-    }
-
-    .menu-col {
-      padding: 4px 8px 0;
-    }
-
-    .section {
-      margin-bottom: 28px;
-    }
-
-    .section-title {
-      margin: 0 0 16px;
-      color: var(--yellow);
-      font-size: clamp(2.2rem, 3vw, 3.5rem);
-      line-height: 1;
-      letter-spacing: -0.06em;
-      font-weight: 900;
-    }
-
-    .menu-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .menu-list li {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      align-items: center;
-      gap: 12px;
-      padding: 4px 0;
-    }
-
-    .item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-      color: var(--white);
-      font-size: clamp(1.1rem, 1.7vw, 1.8rem);
-      font-weight: 700;
-      line-height: 1.35;
-    }
-
-    .item .dot {
-      width: 8px;
-      height: 8px;
-      flex-shrink: 0;
-      border-radius: 50%;
-      background: var(--yellow);
-      box-shadow: 0 0 0 3px rgba(248,177,0,0.2);
-    }
-
-    .price {
-      color: var(--white);
-      font-weight: 800;
-      font-size: clamp(1rem, 1.5vw, 1.5rem);
-      white-space: nowrap;
-    }
-
-    .visual-col {
-      position: relative;
-      min-height: 720px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-top: 8px;
-    }
-
-    .curve {
-      position: absolute;
-      border: 10px solid var(--yellow);
-      border-color: var(--yellow) transparent transparent transparent;
-      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-      pointer-events: none;
-    }
-
-    .curve.one {
-      width: 360px;
-      height: 200px;
-      right: 20px;
-      top: 120px;
-      transform: rotate(14deg);
-    }
-
-    .curve.two {
-      width: 320px;
-      height: 200px;
-      right: 12px;
-      bottom: 90px;
-      transform: rotate(-18deg);
-    }
-
-    .artboard {
-      position: relative;
-      width: min(100%, 520px);
-      height: 690px;
-    }
-
-    .food-card {
-      position: absolute;
-      overflow: hidden;
-      border: 8px solid var(--yellow);
-      background: #0d0d0d;
-      box-shadow: 0 16px 26px var(--shadow);
-    }
-
-    .food-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .food-card.top {
-      top: 10px;
-      left: 8%;
-      width: 78%;
-      height: 270px;
-      border-radius: 48% 52% 50% 50% / 52% 46% 54% 48%;
-    }
-
-    .food-card.bottom {
-      right: 6%;
-      bottom: 24px;
-      width: 74%;
-      height: 270px;
-      border-radius: 52% 48% 50% 50% / 46% 54% 46% 54%;
-    }
-
-    @media (max-width: 900px) {
-      .menu-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .visual-col {
-        order: -1;
-        min-height: 460px;
-      }
-
-      .artboard {
-        height: 460px;
-      }
-
-      .food-card.top {
-        width: 72%;
-        height: 220px;
-      }
-
-      .food-card.bottom {
-        width: 72%;
-        height: 220px;
-        right: 8%;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .page {
-        padding-left: 12px;
-        padding-right: 12px;
-      }
-
-      .brand-block {
-        gap: 10px;
-      }
-
-      .logo-mark {
-        width: 120px;
-      }
-
-      .logo-mark .ring {
-        width: 94px;
-        height: 94px;
-        left: 10px;
-      }
-
-      .logo-mark .ring::before {
-        left: 18px;
-        top: 18px;
-      }
-
-      .menu-list li {
-        gap: 8px;
-      }
-
-      .item {
-        font-size: 0.98rem;
-      }
-
-      .price {
-        font-size: 0.92rem;
-      }
-
-      .section {
-        margin-bottom: 22px;
-      }
-    }
-  </style>
+        @media (max-width: 768px) {
+            .images img {
+                max-width: 100%;
+                border-radius: 15px;
+            }
+            h1 {
+                font-size: 2.2rem;
+                padding: 15px;
+            }
+            h2 {
+                font-size: 1.5rem;
+                padding: 8px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="page">
-    <div class="blob top-right"></div>
-    <div class="blob bottom-left"></div>
-
-    <div class="page-inner">
-      <div class="brand-row">
-        <div class="brand-block">
-          <div class="logo-mark">
-            <div class="ring"></div>
-          </div>
-          <div class="brand-name">
-            <span class="dot-ring"></span>
-            <span class="z">ZONE</span>
-            <span>LOUNGE</span>
-          </div>
-        </div>
-      </div>
-
-      <h1>Food Menu</h1>
-      <div class="script">Ozone Lounge Valley Arcade</div>
-
-      <div class="menu-grid">
-        <div class="menu-col">
-          <div class="section">
-            <h2 class="section-title">Salad</h2>
-            <ul class="menu-list">
-              <li><span class="item"><span class="dot"></span>Guacamole</span><span class="price">350</span></li>
-              <li><span class="item"><span class="dot"></span>Protein Salad</span><span class="price">1000</span></li>
-              <li><span class="item"><span class="dot"></span>Garden Salad</span><span class="price">800</span></li>
-              <li><span class="item"><span class="dot"></span>Potato Salad</span><span class="price">1000</span></li>
-            </ul>
-          </div>
-
-          <div class="section">
-            <h2 class="section-title">Breakfast</h2>
-            <ul class="menu-list">
-              <li><span class="item"><span class="dot"></span>African Tea</span><span class="price">200</span></li>
-              <li><span class="item"><span class="dot"></span>Black Tea White</span><span class="price">200</span></li>
-              <li><span class="item"><span class="dot"></span>Coffee Black</span><span class="price">200</span></li>
-              <li><span class="item"><span class="dot"></span>Coffee Wimbi</span><span class="price">200</span></li>
-              <li><span class="item"><span class="dot"></span>Porridge Glass of Milk</span><span class="price">200</span></li>
-            </ul>
-          </div>
-
-          <div class="section">
-            <h2 class="section-title">Full Breakfast</h2>
-            <ul class="menu-list">
-              <li><span class="item"><span class="dot"></span>Samosas/Sausages, Tea, Eggs, Toast</span><span class="price">850</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="visual-col">
-          <div class="curve one"></div>
-          <div class="curve two"></div>
-
-          <div class="artboard">
-            <div class="food-card top">
-              <img src="5.png" alt="Salad image" />
+    <div class="container">
+        <h1>Ozone lounge</h1>
+        
+        <div class="section">
+            <h2>FOODS</h2>
+            <div class="images">
+                <img src="pics/1.png" alt="Food 1">
+                <img src="pics/2.png" alt="Food 2">
+                <img src="pics/3.png" alt="Food 3">
+                <img src="pics/4.png" alt="Food 4">
+                <img src="pics/5.png" alt="Food 5">
             </div>
-            <div class="food-card bottom">
-              <img src="2.png" alt="Breakfast image" />
-            </div>
-          </div>
         </div>
-      </div>
+        
+        <div class="section">
+            <h2>DRINKS</h2>
+            <div class="images">
+                <img src="pics/1 (1).png" alt="Drink 1">
+                <img src="pics/2 (1).png" alt="Drink 1">
+                <img src="pics/3 (1).png" alt="Drink 1">
+                <img src="pics/4 (1).png" alt="Drink 1">
+                <img src="pics/5 (1).png" alt="Drink 1">
+                <img src="pics/6.png" alt="Drink 1">
+                <img src="pics/7.png" alt="Drink 1">
+                <img src="pics/8.png" alt="Drink 1">
+                <img src="pics/9.png" alt="Drink 1">
+                <img src="pics/10.png" alt="Drink 1">
+                <img src="pics/11.png" alt="Drink 1">
+            </div>
+        </div>
+        
+
+
+        <footer class="footer">
+        
+            <p>&copy; 2026 Ozone lounge. All rights reserved.</p>
+        </footer>
+
+
     </div>
-  </div>
 </body>
 </html>
