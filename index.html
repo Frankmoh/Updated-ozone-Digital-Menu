@@ -3,462 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ozone Lounge Menu | Valley Arcade, Lavington</title>
-    <!-- FontAwesome for Social & Contact Icons -->
+    <title>Ozone Lounge Menu</title>
+    <!-- FontAwesome for Social Media Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Great+Vibes&display=swap" rel="stylesheet">
-    
     <style>
-        :root {
-            --gold: #f5a623;
-            --gold-light: #ffd166;
-            --dark-bg: #0d0d0d;
-            --card-bg: #171717;
-            --text-light: #f8f9fa;
-        }
-
         * {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'Montserrat', Arial, sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--text-light);
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: white;
             text-align: center;
-            padding-bottom: 20px;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Header Styling */
-        header {
-            padding: 25px 15px 15px;
-            background: radial-gradient(circle at center, #261c0a 0%, #0d0d0d 75%);
-            border-bottom: 1px solid rgba(245, 166, 35, 0.25);
-        }
-
-        .brand-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            background: linear-gradient(45deg, #fff, var(--gold), var(--gold-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0px 4px 15px rgba(245, 166, 35, 0.25);
-        }
-
-        .brand-subtitle {
-            font-family: 'Great Vibes', cursive;
-            color: var(--gold);
-            font-size: 1.7rem;
-            margin-top: 2px;
-            letter-spacing: 1px;
-        }
-
-        .location-tag {
-            font-size: 0.78rem;
-            color: #aaa;
-            margin-top: 4px;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-        }
-
-        /* Floating / Sticky Top Navigation Buttons */
-        .sticky-nav {
+        /* Floating Top Buttons to Switch Between Drinks and Foods */
+        .floating-nav {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(13, 13, 13, 0.92);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 12px 15px;
+            background-color: rgba(17, 17, 17, 0.95);
+            padding: 12px 10px;
             display: flex;
             justify-content: center;
-            gap: 12px;
-            border-bottom: 1px solid rgba(245, 166, 35, 0.3);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+            gap: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+            border-bottom: 2px solid #ff4500;
         }
 
-        .tab-btn {
-            flex: 1;
-            max-width: 190px;
-            padding: 12px 18px;
-            border: 2px solid var(--gold);
-            background-color: transparent;
-            color: var(--text-light);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
+        .nav-btn {
+            background: #333;
+            color: white;
+            border: 2px solid #ff0;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            transition: 0.3s;
         }
 
-        .tab-btn.active {
-            background: linear-gradient(90deg, #ff8c00, var(--gold));
-            color: #000;
-            box-shadow: 0 0 15px rgba(245, 166, 35, 0.6);
-            transform: scale(1.03);
+        .nav-btn.active {
+            background: linear-gradient(90deg, #ff4500, #ff0);
+            color: #222;
+            box-shadow: 0px 0px 10px rgba(255, 255, 0, 0.7);
         }
 
-        /* Main Container & Sections */
         .container {
-            width: 94%;
-            max-width: 1100px;
-            margin: 15px auto;
+            width: 95%;
+            max-width: 800px;
+            margin: auto;
         }
 
-        .menu-section {
-            display: none;
-            animation: fadeIn 0.35s ease-in-out;
-        }
-
-        .menu-section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section-heading {
-            color: var(--gold);
-            font-size: 1.3rem;
+        h1 {
+            color: #ff0;
+            padding: 15px;
+            font-size: 2.2rem;
+            font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin: 15px 0 5px;
+            margin-top: 10px;
+            text-shadow: 0px 0px 10px #ff4500;
         }
 
-        .zoom-hint {
-            font-size: 0.8rem;
-            color: #888;
-            margin-bottom: 18px;
+        h2 {
+            background: linear-gradient(90deg, #ff4500, #ff0);
+            color: #222;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 0, 0.7);
         }
 
-        /* Menu Image Grid */
+        .section {
+            margin: 15px 0;
+            padding: 15px 10px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        /* Hide the inactive section */
+        .hidden {
+            display: none;
+        }
+
+        /* Stack images one after the other in order */
         .images {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 18px;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
         }
 
         .images img {
             width: 100%;
-            max-width: 480px;
-            height: auto;
-            border-radius: 14px;
-            border: 1px solid rgba(245, 166, 35, 0.3);
-            background-color: var(--card-bg);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .images img:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(245, 166, 35, 0.35);
-        }
-
-        /* Fullscreen Tap-to-Zoom Modal */
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-        }
-
-        .lightbox.open {
-            display: flex;
-        }
-
-        .lightbox img {
             max-width: 100%;
-            max-height: 92vh;
-            border-radius: 8px;
-            object-fit: contain;
-        }
-
-        .close-lightbox {
-            position: absolute;
-            top: 18px;
-            right: 22px;
-            color: #fff;
-            font-size: 2.2rem;
-            cursor: pointer;
-            background: rgba(0,0,0,0.6);
-            width: 44px;
-            height: 44px;
-            line-height: 44px;
-            border-radius: 50%;
-            border: 1px solid var(--gold);
-        }
-
-        /* Footer Styling */
-        .footer {
-            background-color: #121212;
-            padding: 35px 20px;
-            margin-top: 45px;
-            border-top: 2px solid var(--gold);
-            border-radius: 20px 20px 0 0;
-        }
-
-        .footer h3 {
-            color: var(--gold);
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .call-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(90deg, #ff8c00, var(--gold));
-            color: #000;
-            font-weight: 800;
-            font-size: 1.05rem;
-            padding: 13px 26px;
-            border-radius: 50px;
-            text-decoration: none;
-            margin-bottom: 22px;
-            box-shadow: 0 4px 15px rgba(245, 166, 35, 0.4);
-            transition: transform 0.2s ease;
-        }
-
-        .call-btn:active {
-            transform: scale(0.96);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin: 15px 0 25px;
-            flex-wrap: wrap;
-        }
-
-        .social-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background-color: #1f1f1f;
-            border: 1px solid rgba(245, 166, 35, 0.4);
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.35rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-icon.instagram:hover { background: #E1306C; border-color: #E1306C; }
-        .social-icon.facebook:hover { background: #1877F2; border-color: #1877F2; }
-        .social-icon.whatsapp:hover { background: #25D366; border-color: #25D366; }
-        .social-icon.website:hover { background: var(--gold); color: #000; border-color: var(--gold); }
-
-        .website-link {
+            height: auto;
+            border-radius: 10px;
             display: block;
-            color: var(--gold);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #111;
+            padding: 25px 15px;
+            text-align: center;
+            margin-top: 40px;
+            width: 100%;
+            color: #ff0;
+            font-size: 1.1rem;
+            border-top: 2px solid #ff4500;
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
+        .footer a {
+            color: #ff4500;
             text-decoration: none;
-            font-size: 0.95rem;
-            margin-bottom: 12px;
-            font-weight: 600;
+            font-weight: bold;
         }
 
-        .copyright {
-            font-size: 0.8rem;
-            color: #777;
-            margin-top: 15px;
-        }
-
-        /* Floating WhatsApp Quick Button */
-        .floating-wa {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
-            color: white;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
+        .social-icons {
+            margin: 18px 0;
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 1.9rem;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5);
-            z-index: 1500;
-            text-decoration: none;
-            transition: transform 0.2s ease;
+            gap: 20px;
         }
 
-        .floating-wa:hover {
-            transform: scale(1.08);
+        .social-icons a {
+            color: white;
+            font-size: 1.8rem;
+            transition: color 0.3s ease;
         }
 
-        @media (max-width: 600px) {
-            .brand-title { font-size: 1.8rem; }
-            .brand-subtitle { font-size: 1.45rem; }
-            .images img { max-width: 100%; }
+        .social-icons a:hover {
+            color: #ff0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.4rem;
+            }
+            .nav-btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Brand Header -->
-    <header>
-        <div class="brand-title">OZONE LOUNGE</div>
-        <div class="brand-subtitle">Valley Arcade</div>
-        <div class="location-tag"><i class="fa-solid fa-location-dot"></i> Gitanga Road, Lavington</div>
-    </header>
-
-    <!-- Floating Top Switcher Buttons -->
-    <nav class="sticky-nav">
-        <button class="tab-btn active" id="btn-drinks" onclick="switchMenu('drinks')">
-            <i class="fa-solid fa-martini-glass-citrus"></i> Drinks
-        </button>
-        <button class="tab-btn" id="btn-foods" onclick="switchMenu('foods')">
-            <i class="fa-solid fa-utensils"></i> Foods
-        </button>
-    </nav>
+    <!-- Floating Buttons at the Top -->
+    <div class="floating-nav">
+        <button id="btn-drinks" class="nav-btn active" onclick="showSection('drinks')">🍹 Drinks</button>
+        <button id="btn-foods" class="nav-btn" onclick="showSection('foods')">🍗 Foods</button>
+    </div>
 
     <div class="container">
+        <h1>OZONE LOUNGE</h1>
         
-        <!-- ================= DRINKS MENU SECTION (drink-1.png to drink-12.png) ================= -->
-        <div id="drinks-section" class="menu-section active">
-            <h2 class="section-heading">Drinks Menu</h2>
-            <p class="zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Tap any page to view full screen</p>
-            
+        <!-- DRINKS SECTION (drink-1.png to drink-12.png) -->
+        <div id="drinks" class="section">
+            <h2>DRINKS</h2>
             <div class="images">
-                <img src="drink-1.png" alt="Drinks Menu Page 1" loading="lazy" onclick="openLightbox(this.src)">
-                <img src="drink-2.png" alt="Drinks Menu Page 2" loading="lazy" onclick="openLightbox(this.src)">
-                <img src="drink-3.png" alt="Drinks Menu Page 3" loading="lazy" onclick="openLightbox(this.src)">
-                <img src="drink-4.png" alt="Drinks Menu Page 4" loading="lazy" onclick="openLightbox(this.src)">
-                <img src="drink-5.png" alt="Drinks Menu Page 5" loading="lazy" onclick="openLightbox(this.src)">
-                <img src="drink-6.png" alt="Drinks Menu Page 6" loading="lazy" onclick="openLightbox(this.src)">
-                <img src="drink-7.png" alt="Drinks Menu Page 7" loading="lazy" onclick="openLightbox(this.src)">
-                <img src="drink-8.png" alt="Drinks Menu Page 8" loading="lazy" onclick="openLightbox(this.src)">
-                <img src="drink-9.png" alt="Drinks Menu Page 9" loading="lazy" onclick="openLightbox(this.src)">
-                <img src="drink-10.png" alt="Drinks Menu Page 10" loading="lazy" onclick="openLightbox(this.src)">
-                <img src="drink-11.png" alt="Drinks Menu Page 11" loading="lazy" onclick="openLightbox(this.src)">
-                <img src="drink-12.png" alt="Drinks Menu Page 12" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="drink-1.png" alt="Drink 1">
+                <img src="drink-2.png" alt="Drink 2">
+                <img src="drink-3.png" alt="Drink 3">
+                <img src="drink-4.png" alt="Drink 4">
+                <img src="drink-5.png" alt="Drink 5">
+                <img src="drink-6.png" alt="Drink 6">
+                <img src="drink-7.png" alt="Drink 7">
+                <img src="drink-8.png" alt="Drink 8">
+                <img src="drink-9.png" alt="Drink 9">
+                <img src="drink-10.png" alt="Drink 10">
+                <img src="drink-11.png" alt="Drink 11">
+                <img src="drink-12.png" alt="Drink 12">
             </div>
         </div>
-
-        <!-- ================= FOODS MENU SECTION (food-1.png to food-5.png) ================= -->
-        <div id="foods-section" class="menu-section">
-            <h2 class="section-heading">Food Menu</h2>
-            <p class="zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Tap any page to view full screen</p>
-            
+        
+        <!-- FOODS SECTION (food-1.png to food-5.png) -->
+        <div id="foods" class="section hidden">
+            <h2>FOODS</h2>
             <div class="images">
-                <img src="food-1.png" alt="Food Menu Page 1" loading="lazy" onclick="openLightbox(this.src)">
-                <img src="food-2.png" alt="Food Menu Page 2" loading="lazy" onclick="openLightbox(this.src)">
-                <img src="food-3.png" alt="Food Menu Page 3" loading="lazy" onclick="openLightbox(this.src)">
-                <img src="food-4.png" alt="Food Menu Page 4" loading="lazy" onclick="openLightbox(this.src)">
-                <img src="food-5.png" alt="Food Menu Page 5" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="food-1.png" alt="Food 1">
+                <img src="food-2.png" alt="Food 2">
+                <img src="food-3.png" alt="Food 3">
+                <img src="food-4.png" alt="Food 4">
+                <img src="food-5.png" alt="Food 5">
             </div>
         </div>
-
     </div>
 
-    <!-- Fullscreen Image Zoom Modal -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="close-lightbox">&times;</span>
-        <img id="lightbox-img" src="" alt="Full screen menu">
-    </div>
-
-    <!-- Floating WhatsApp Button (Bottom Right) -->
-    <a href="https://wa.me/254759881128?text=Hello%20Ozone%20Lounge,%20I%20would%20like%20to%20place%20an%20order" 
-       class="floating-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <!-- Footer with Call to Order & Social Links -->
+    <!-- Footer -->
     <footer class="footer">
-        <h3>Order & Reservations</h3>
+        <p>📞 Call to Order: <a href="tel:0759881128">0759 881 128</a></p>
         
-        <!-- Call to Order Button -->
-        <a href="tel:0759881128" class="call-btn">
-            <i class="fa-solid fa-phone-volume"></i> Call to Order: 0759 881 128
-        </a>
-
-        <!-- Social Media Icons -->
-        <div class="social-links">
-            <a href="https://www.instagram.com/Ozonelounge_lavington" target="_blank" rel="noopener noreferrer" class="social-icon instagram" aria-label="Instagram">
+        <div class="social-icons">
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/Ozonelounge_lavington" target="_blank" aria-label="Instagram">
                 <i class="fa-brands fa-instagram"></i>
             </a>
-            <a href="https://www.facebook.com/Ozonelounge_lavington" target="_blank" rel="noopener noreferrer" class="social-icon facebook" aria-label="Facebook">
-                <i class="fa-brands fa-facebook-f"></i>
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/Ozonelounge_lavington" target="_blank" aria-label="Facebook">
+                <i class="fa-brands fa-facebook"></i>
             </a>
-            <a href="https://wa.me/254759881128" target="_blank" rel="noopener noreferrer" class="social-icon whatsapp" aria-label="WhatsApp">
+            <!-- WhatsApp -->
+            <a href="https://wa.me/254759881128" target="_blank" aria-label="WhatsApp">
                 <i class="fa-brands fa-whatsapp"></i>
             </a>
-            <a href="https://ozonelounge.co.ke/" target="_blank" rel="noopener noreferrer" class="social-icon website" aria-label="Website">
+            <!-- Website -->
+            <a href="https://ozonelounge.co.ke/" target="_blank" aria-label="Website">
                 <i class="fa-solid fa-globe"></i>
             </a>
         </div>
 
-        <a href="https://ozonelounge.co.ke/" target="_blank" rel="noopener noreferrer" class="website-link">
-            www.ozonelounge.co.ke
-        </a>
-
-        <p class="copyright">&copy; 2026 Ozone Lounge Lavington. All rights reserved.</p>
+        <p>🌐 Website: <a href="https://ozonelounge.co.ke/" target="_blank">ozonelounge.co.ke</a></p>
+        <p style="font-size: 0.9rem; color: #aaa; margin-top: 15px;">&copy; 2026 Ozone Lounge. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for Tab Switching & Image Zoom -->
     <script>
-        function switchMenu(category) {
-            const drinksSection = document.getElementById('drinks-section');
-            const foodsSection = document.getElementById('foods-section');
-            const btnDrinks = document.getElementById('btn-drinks');
-            const btnFoods = document.getElementById('btn-foods');
-
-            if (category === 'drinks') {
-                drinksSection.classList.add('active');
-                foodsSection.classList.remove('active');
-                btnDrinks.classList.add('active');
-                btnFoods.classList.remove('active');
+        function showSection(menuType) {
+            if (menuType === 'drinks') {
+                document.getElementById('drinks').classList.remove('hidden');
+                document.getElementById('foods').classList.add('hidden');
+                document.getElementById('btn-drinks').classList.add('active');
+                document.getElementById('btn-foods').classList.remove('active');
             } else {
-                foodsSection.classList.add('active');
-                drinksSection.classList.remove('active');
-                btnFoods.classList.add('active');
-                btnDrinks.classList.remove('active');
+                document.getElementById('foods').classList.remove('hidden');
+                document.getElementById('drinks').classList.add('hidden');
+                document.getElementById('btn-foods').classList.add('active');
+                document.getElementById('btn-drinks').classList.remove('active');
             }
-
-            // Smoothly scroll back to the top of the menu when switching tabs
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function openLightbox(imageSrc) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            lightboxImg.src = imageSrc;
-            lightbox.classList.add('open');
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('open');
+            window.scrollTo(0, 0);
         }
     </script>
+
 </body>
 </html>
