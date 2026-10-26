@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ozone Lounge Food Menu</title>
+  <title>Ozone Lounge - Food Menu</title>
   <style>
     :root {
       --bg: #050505;
-      --panel: #0a0a0a;
-      --text: #f4f4f4;
-      --yellow: #f7b400;
-      --yellow-strong: #ffaf00;
+      --text: #f5f5f5;
+      --yellow: #f8b100;
+      --yellow-soft: #f9c845;
       --white: #ffffff;
-      --muted: #ebebeb;
+      --muted: #ececec;
+      --shadow: rgba(0, 0, 0, 0.28);
     }
 
     * { box-sizing: border-box; }
 
     html, body {
       margin: 0;
-      min-height: 100%;
       background: var(--bg);
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
+      min-height: 100%;
     }
 
     body {
@@ -33,52 +33,52 @@
     .page {
       position: relative;
       min-height: 100vh;
-      background: #050505;
+      background: #040404;
       overflow: hidden;
-      padding: 26px 20px 48px;
+      padding: 24px 18px 40px;
     }
 
-    .shape {
+    .blob {
       position: absolute;
       background: var(--yellow);
       z-index: 0;
-      opacity: 0.98;
       pointer-events: none;
+      opacity: 0.98;
     }
 
-    .shape.top-right {
+    .blob.top-right {
+      width: 200px;
+      height: 120px;
+      right: 14px;
+      top: 12px;
+      border-radius: 50% 50% 48% 52% / 52% 44% 56% 48%;
+      transform: rotate(14deg);
+    }
+
+    .blob.bottom-left {
       width: 190px;
       height: 130px;
-      right: 24px;
-      top: 18px;
-      border-radius: 48% 52% 54% 46% / 52% 46% 54% 48%;
-      transform: rotate(12deg);
-    }
-
-    .shape.bottom-left {
-      width: 180px;
-      height: 120px;
-      left: 10px;
-      bottom: 12px;
-      border-radius: 52% 48% 44% 56% / 46% 52% 48% 54%;
+      left: 8px;
+      bottom: 10px;
+      border-radius: 48% 52% 42% 58% / 46% 54% 46% 54%;
       transform: rotate(-18deg);
     }
 
     .page-inner {
       position: relative;
       z-index: 1;
-      max-width: 1220px;
+      max-width: 1280px;
       margin: 0 auto;
     }
 
-    .brand {
+    .brand-row {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 6px;
+      margin-top: 4px;
     }
 
-    .brand-wrap {
+    .brand-block {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -86,37 +86,39 @@
       flex-wrap: wrap;
     }
 
-    .logo-badge {
+    .logo-mark {
       position: relative;
       width: 170px;
-      height: 90px;
+      height: 96px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-right: 12px;
     }
 
-    .logo-badge .ring {
+    .logo-mark .ring {
       position: absolute;
       width: 120px;
       height: 120px;
-      border: 8px solid white;
+      border: 8px solid #fff;
       border-radius: 50%;
+      left: 8px;
+      top: -16px;
       background: transparent;
-      left: 4px;
-      top: -15px;
     }
 
-    .logo-badge .ring::before {
+    .logo-mark .ring::before {
       content: "";
       position: absolute;
-      inset: 18px;
       border-radius: 50%;
+      width: 54px;
+      height: 54px;
+      left: 26px;
+      top: 25px;
+      border: 8px solid #fff;
       background: #000;
-      border: 7px solid #fff;
     }
 
-    .logo-badge .ring::after {
+    .logo-mark .ring::after {
       content: "";
       position: absolute;
       width: 18px;
@@ -124,94 +126,93 @@
       border-radius: 50%;
       background: var(--yellow);
       right: 18px;
-      top: 38px;
-      box-shadow: 0 0 0 5px rgba(255,255,255,1);
+      top: 40px;
+      box-shadow: 0 0 0 5px #fff;
     }
 
-    .brand-word {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.08em;
-      font-weight: 900;
-      font-size: clamp(2.9rem, 4.7vw, 6.4rem);
-      line-height: 0.84;
+    .brand-name {
+      font-size: clamp(2.8rem, 5vw, 6.5rem);
+      line-height: 0.82;
       letter-spacing: -0.08em;
       text-transform: uppercase;
       color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 0.08em;
+      font-weight: 900;
+      flex-wrap: wrap;
     }
 
-    .brand-word .burst {
+    .brand-name .dot-ring {
       position: relative;
       display: inline-block;
-      width: 0.7em;
-      height: 0.7em;
+      width: 0.72em;
+      height: 0.72em;
       border: 6px solid #fff;
       border-radius: 50%;
       background: #000;
-      margin-right: 0.02em;
+      margin-right: 0.04em;
     }
 
-    .brand-word .burst::before {
+    .brand-name .dot-ring::before {
       content: "";
       position: absolute;
-      inset: 0.2em;
+      inset: 0.18em;
       background: #000;
       border-radius: 50%;
     }
 
-    .brand-word .z {
+    .brand-name .z {
       position: relative;
       display: inline-block;
     }
 
-    .brand-word .z::after {
+    .brand-name .z::after {
       content: "";
       position: absolute;
       width: 0.42em;
       height: 0.42em;
+      right: -0.12em;
+      top: 0.08em;
       border-radius: 50%;
       background: var(--yellow);
-      right: -0.12em;
-      top: 0.1em;
       box-shadow: 0 0 0 5px rgba(255,255,255,1);
     }
 
-    .brand-word .lounge {
+    .brand-name .lounge {
       display: block;
-      font-size: 0.48em;
-      letter-spacing: 0.13em;
+      font-size: 0.44em;
+      letter-spacing: 0.14em;
       margin-top: 4px;
       text-align: center;
     }
 
     h1 {
-      margin: 10px 0 0;
       text-align: center;
+      margin: 10px 0 0;
       color: var(--yellow);
-      font-size: clamp(3rem, 7vw, 7.8rem);
+      font-size: clamp(3.2rem, 7vw, 8rem);
       line-height: 0.9;
       letter-spacing: -0.06em;
       font-weight: 900;
-      text-transform: none;
     }
 
     .script {
       text-align: center;
+      margin-top: 8px;
       font-family: "Segoe Print", "Bradley Hand", cursive;
       font-style: italic;
-      color: #f7f7f7;
       font-size: clamp(1.8rem, 3vw, 3.2rem);
-      margin-top: 8px;
+      color: var(--white);
       opacity: 0.96;
     }
 
-    .menu-layout {
+    .menu-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.18fr 0.82fr;
       gap: 24px;
       align-items: start;
-      margin-top: 24px;
+      margin-top: 20px;
     }
 
     .menu-col {
@@ -223,18 +224,18 @@
     }
 
     .section-title {
+      margin: 0 0 16px;
       color: var(--yellow);
-      font-size: clamp(2.1rem, 3vw, 3.7rem);
-      font-weight: 900;
+      font-size: clamp(2.2rem, 3vw, 3.5rem);
       line-height: 1;
-      margin: 0 0 14px;
-      letter-spacing: -0.05em;
+      letter-spacing: -0.06em;
+      font-weight: 900;
     }
 
     .menu-list {
       list-style: none;
-      margin: 0;
       padding: 0;
+      margin: 0;
     }
 
     .menu-list li {
@@ -250,35 +251,35 @@
       align-items: center;
       gap: 10px;
       min-width: 0;
-      font-size: clamp(1.1rem, 1.7vw, 1.9rem);
-      line-height: 1.35;
       color: var(--white);
+      font-size: clamp(1.1rem, 1.7vw, 1.8rem);
       font-weight: 700;
+      line-height: 1.35;
     }
 
     .item .dot {
       width: 8px;
       height: 8px;
+      flex-shrink: 0;
       border-radius: 50%;
       background: var(--yellow);
-      box-shadow: 0 0 0 3px rgba(247,180,0,0.2);
-      flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(248,177,0,0.2);
     }
 
     .price {
       color: var(--white);
-      font-size: clamp(0.98rem, 1.4vw, 1.65rem);
       font-weight: 800;
+      font-size: clamp(1rem, 1.5vw, 1.5rem);
       white-space: nowrap;
     }
 
     .visual-col {
       position: relative;
-      min-height: 760px;
+      min-height: 720px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 0 0;
+      padding-top: 8px;
     }
 
     .curve {
@@ -292,80 +293,79 @@
     .curve.one {
       width: 360px;
       height: 200px;
-      right: 18px;
+      right: 20px;
       top: 120px;
-      transform: rotate(12deg);
+      transform: rotate(14deg);
     }
 
     .curve.two {
-      width: 310px;
+      width: 320px;
       height: 200px;
-      right: 0;
-      bottom: 82px;
+      right: 12px;
+      bottom: 90px;
       transform: rotate(-18deg);
     }
 
-    .image-stack {
+    .artboard {
       position: relative;
-      width: min(100%, 560px);
-      height: 710px;
+      width: min(100%, 520px);
+      height: 690px;
     }
 
-    .image-card {
+    .food-card {
       position: absolute;
       overflow: hidden;
-      background: #101010;
       border: 8px solid var(--yellow);
-      box-shadow: 0 18px 30px rgba(0,0,0,0.22);
+      background: #0d0d0d;
+      box-shadow: 0 16px 26px var(--shadow);
     }
 
-    .image-card img {
+    .food-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .image-card.top {
-      width: 80%;
-      height: 270px;
+    .food-card.top {
+      top: 10px;
       left: 8%;
-      top: 12px;
+      width: 78%;
+      height: 270px;
       border-radius: 48% 52% 50% 50% / 52% 46% 54% 48%;
     }
 
-    .image-card.bottom {
+    .food-card.bottom {
+      right: 6%;
+      bottom: 24px;
       width: 74%;
       height: 270px;
-      left: 24%;
-      bottom: 10px;
-      border-radius: 50% 50% 52% 48% / 44% 54% 46% 56%;
+      border-radius: 52% 48% 50% 50% / 46% 54% 46% 54%;
     }
 
     @media (max-width: 900px) {
-      .menu-layout {
+      .menu-grid {
         grid-template-columns: 1fr;
       }
 
       .visual-col {
         order: -1;
-        min-height: 500px;
+        min-height: 460px;
       }
 
-      .image-stack {
-        width: min(100%, 500px);
-        height: 500px;
+      .artboard {
+        height: 460px;
       }
 
-      .image-card.top {
+      .food-card.top {
         width: 72%;
         height: 220px;
       }
 
-      .image-card.bottom {
-        width: 68%;
+      .food-card.bottom {
+        width: 72%;
         height: 220px;
-        left: 26%;
+        right: 8%;
       }
     }
 
@@ -375,28 +375,23 @@
         padding-right: 12px;
       }
 
-      .brand-wrap {
-        gap: 8px;
+      .brand-block {
+        gap: 10px;
       }
 
-      .logo-badge {
-        width: 140px;
-        margin-right: 0;
+      .logo-mark {
+        width: 120px;
       }
 
-      .logo-badge .ring {
-        width: 100px;
-        height: 100px;
-        left: 3px;
+      .logo-mark .ring {
+        width: 94px;
+        height: 94px;
+        left: 10px;
       }
 
-      .brand-word {
-        letter-spacing: -0.06em;
-      }
-
-      .menu-col {
-        padding-left: 0;
-        padding-right: 0;
+      .logo-mark .ring::before {
+        left: 18px;
+        top: 18px;
       }
 
       .menu-list li {
@@ -404,32 +399,32 @@
       }
 
       .item {
-        font-size: 1rem;
+        font-size: 0.98rem;
       }
 
       .price {
-        font-size: 0.96rem;
+        font-size: 0.92rem;
       }
 
-      .script {
-        margin-top: 6px;
+      .section {
+        margin-bottom: 22px;
       }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <div class="shape top-right"></div>
-    <div class="shape bottom-left"></div>
+    <div class="blob top-right"></div>
+    <div class="blob bottom-left"></div>
 
     <div class="page-inner">
-      <div class="brand">
-        <div class="brand-wrap">
-          <div class="logo-badge">
+      <div class="brand-row">
+        <div class="brand-block">
+          <div class="logo-mark">
             <div class="ring"></div>
           </div>
-          <div class="brand-word">
-            <span class="burst"></span>
+          <div class="brand-name">
+            <span class="dot-ring"></span>
             <span class="z">ZONE</span>
             <span>LOUNGE</span>
           </div>
@@ -439,7 +434,7 @@
       <h1>Food Menu</h1>
       <div class="script">Ozone Lounge Valley Arcade</div>
 
-      <div class="menu-layout">
+      <div class="menu-grid">
         <div class="menu-col">
           <div class="section">
             <h2 class="section-title">Salad</h2>
@@ -474,12 +469,12 @@
           <div class="curve one"></div>
           <div class="curve two"></div>
 
-          <div class="image-stack">
-            <div class="image-card top">
-              <img src="5.png" alt="Food menu salad image" />
+          <div class="artboard">
+            <div class="food-card top">
+              <img src="5.png" alt="Salad image" />
             </div>
-            <div class="image-card bottom">
-              <img src="2.png" alt="Food menu breakfast image" />
+            <div class="food-card bottom">
+              <img src="2.png" alt="Breakfast image" />
             </div>
           </div>
         </div>
