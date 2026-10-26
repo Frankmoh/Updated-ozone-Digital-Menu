@@ -38,6 +38,32 @@
       padding: 24px 18px 40px;
     }
 
+    .blob {
+      position: absolute;
+      background: var(--yellow);
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.98;
+    }
+
+    .blob.top-right {
+      width: 200px;
+      height: 120px;
+      right: 14px;
+      top: 12px;
+      border-radius: 50% 50% 48% 52% / 52% 44% 56% 48%;
+      transform: rotate(14deg);
+    }
+
+    .blob.bottom-left {
+      width: 190px;
+      height: 130px;
+      left: 8px;
+      bottom: 10px;
+      border-radius: 48% 52% 42% 58% / 46% 54% 46% 54%;
+      transform: rotate(-18deg);
+    }
+
     .page-inner {
       position: relative;
       z-index: 1;
@@ -153,6 +179,14 @@
       box-shadow: 0 0 0 5px rgba(255,255,255,1);
     }
 
+    .brand-name .lounge {
+      display: block;
+      font-size: 0.44em;
+      letter-spacing: 0.14em;
+      margin-top: 4px;
+      text-align: center;
+    }
+
     h1 {
       text-align: center;
       margin: 10px 0 0;
@@ -248,6 +282,30 @@
       padding-top: 8px;
     }
 
+    .curve {
+      position: absolute;
+      border: 10px solid var(--yellow);
+      border-color: var(--yellow) transparent transparent transparent;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      pointer-events: none;
+    }
+
+    .curve.one {
+      width: 360px;
+      height: 200px;
+      right: 20px;
+      top: 120px;
+      transform: rotate(14deg);
+    }
+
+    .curve.two {
+      width: 320px;
+      height: 200px;
+      right: 12px;
+      bottom: 90px;
+      transform: rotate(-18deg);
+    }
+
     .artboard {
       position: relative;
       width: min(100%, 520px);
@@ -260,15 +318,13 @@
       border: 8px solid var(--yellow);
       background: #0d0d0d;
       box-shadow: 0 16px 26px var(--shadow);
-      border-radius: 0;
     }
 
     .food-card img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       display: block;
-      background: #080808;
     }
 
     .food-card.top {
@@ -276,6 +332,7 @@
       left: 8%;
       width: 78%;
       height: 270px;
+      border-radius: 48% 52% 50% 50% / 52% 46% 54% 48%;
     }
 
     .food-card.bottom {
@@ -283,6 +340,7 @@
       bottom: 24px;
       width: 74%;
       height: 270px;
+      border-radius: 52% 48% 50% 50% / 46% 54% 46% 54%;
     }
 
     @media (max-width: 900px) {
@@ -356,6 +414,9 @@
 </head>
 <body>
   <div class="page">
+    <div class="blob top-right"></div>
+    <div class="blob bottom-left"></div>
+
     <div class="page-inner">
       <div class="brand-row">
         <div class="brand-block">
@@ -405,12 +466,15 @@
         </div>
 
         <div class="visual-col">
+          <div class="curve one"></div>
+          <div class="curve two"></div>
+
           <div class="artboard">
             <div class="food-card top">
-              <img src="1.png" alt="Primary food image" />
+              <img src="5.png" alt="Salad image" />
             </div>
             <div class="food-card bottom">
-              <img src="2.png" alt="Secondary food image" />
+              <img src="2.png" alt="Breakfast image" />
             </div>
           </div>
         </div>
